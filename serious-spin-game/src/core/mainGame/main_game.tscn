@@ -25,11 +25,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=930416795]
+[node name="PawseLayer" type="CanvasLayer" parent="." unique_id=930416795]
 process_mode = 2
 layer = 20
 
-[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=130663713]
+[node name="PawseRoot" type="Control" parent="PawseLayer" unique_id=130663713]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
