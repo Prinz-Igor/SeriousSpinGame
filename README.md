@@ -2,7 +2,7 @@
 
 ## Theme: 
 - Twin Stick Shooter
-- serious futuristic/Sci Fi (Professional Assassin in a Cyberpunk world?)
+- serious Steampunk (Compressed air rifle?)
 
 ## Engine:
 Godot (C#/Mono Version) 
