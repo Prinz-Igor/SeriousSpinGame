@@ -11,6 +11,8 @@ public partial class WeaponComponent : Node2D
 	[Export] Sprite2D weaponSprite;
 	[Export] PackedScene packedProjectile;
 	
+	public Node entityRoot;
+	
 	WeaponStats wStats;
 	List<Projectile> projectilepool = new List<Projectile>();
 
@@ -27,7 +29,7 @@ public partial class WeaponComponent : Node2D
 			toInstanceP.pStats = wStats.projectileStats;
 			toInstanceP.Position = new Vector2(wStats.muzzleOffset, toInstanceP.Position.Y);
 			projectilepool.Add(toInstanceP);
-			AddChild(projectilepool[i]);
+			Owner.CallDeferred("add_sibling",projectilepool[i]);
 
 		}
 		GD.Print("Projectilepool done");
@@ -47,7 +49,10 @@ public partial class WeaponComponent : Node2D
 
 			if (!projectilepool[i].inAir)
 			{
-				projectilepool[i].targetVector = GetGlobalMousePosition();
+				Vector2 targetVector = GetGlobalMousePosition().Normalized();
+				projectilepool[i].Rotation = this.GlobalRotation;
+				projectilepool[i].Position = this.GlobalPosition+targetVector*wStats.muzzleOffset;
+				projectilepool[i].targetVector = targetVector;
 				projectilepool[i].FireProjectile();
 				i=i+projectilepool.Count;
 			}

@@ -7,7 +7,7 @@
 
 [node name="Projectile" type="CharacterBody2D" unique_id=1780131643]
 collision_layer = 8
-collision_mask = 6
+collision_mask = 4
 script = ExtResource("1_kxll8")
 
 [node name="Node2D" type="CollisionShape2D" parent="." unique_id=664771443]

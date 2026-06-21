@@ -9,7 +9,6 @@ public partial class Player : CharacterBody2D
 	[Signal] public delegate void FireWeaponEventHandler(); 
 
 	public override void _Ready() {
-		
 	}
 
     public override void _Process(double delta)
