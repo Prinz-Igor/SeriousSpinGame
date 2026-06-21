@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cq76avhnvbiba"]
 
-[ext_resource type="Script" uid="uid://4k5yk4tbfbbx" path="res://src/gameplay/player/playerWeaponComponent/WeaponStats.cs" id="1_afovm"]
+[ext_resource type="Resource" uid="uid://b4w2yuytyxucl" path="res://src/gameplay/interactables/projectiles/projectileResources/HighCaliberProjectile.tres" id="1_rrwru"]
+[ext_resource type="Script" uid="uid://4k5yk4tbfbbx" path="res://src/gameplay/player/playerWeaponComponent/WeaponStats.cs" id="2_ns240"]
 
 [resource]
-script = ExtResource("1_afovm")
+script = ExtResource("2_ns240")
 name = "Martin Henfield"
-projectiledamage = 10
-projectileSpeed = 10
+projectileStats = ExtResource("1_rrwru")
 magazineSize = 1
 weaponCooldown = 5
 metadata/_custom_type_script = "uid://4k5yk4tbfbbx"

@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://dl8btrdhchf3s"]
 
+[ext_resource type="Resource" uid="uid://c6y0x7sl5omqw" path="res://src/gameplay/interactables/projectiles/projectileResources/defaultProjectile.tres" id="1_4lbl8"]
 [ext_resource type="Script" uid="uid://4k5yk4tbfbbx" path="res://src/gameplay/player/playerWeaponComponent/WeaponStats.cs" id="1_ywqg4"]
 
 [resource]
 script = ExtResource("1_ywqg4")
 name = "Semi-Automatic Rifle"
+projectileStats = ExtResource("1_4lbl8")
 metadata/_custom_type_script = "uid://4k5yk4tbfbbx"

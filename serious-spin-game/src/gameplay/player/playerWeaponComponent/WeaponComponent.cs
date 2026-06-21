@@ -2,12 +2,14 @@ using Godot;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Runtime.Serialization;
 
 public partial class WeaponComponent : Node2D
 {
 	[Export] WeaponStats initialWeapon;
 	[Export] Sprite2D weaponSprite;
+	
 	WeaponStats wStats;
 	List<Projectile> projectilepool;
 
