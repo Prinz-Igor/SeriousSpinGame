@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqy0tv7h7okqu"]
 
 [ext_resource type="Script" uid="uid://y75lbtlww85v" path="res://src/core/mainGame/MainGame.cs" id="1_0vtd6"]
+[ext_resource type="PackedScene" uid="uid://bdnnf1mkxpj5n" path="res://src/gameplay/player/player.tscn" id="2_0xvf7"]
 
 [node name="MainGame" type="Node" unique_id=639368157]
 process_mode = 3
@@ -15,6 +16,8 @@ position = Vector2(-1, 0)
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=1889299178]
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=73363318]
+
+[node name="Player" parent="World/EntityRoot" unique_id=118812628 instance=ExtResource("2_0xvf7")]
 
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=1740414983]
 

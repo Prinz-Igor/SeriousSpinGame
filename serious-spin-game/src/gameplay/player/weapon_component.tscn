@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cb20h607e0ttw"]
+
+[node name="WeaponComponent" type="Node2D" unique_id=533147906]
+
+[node name="PlayerOffset" type="Node2D" parent="." unique_id=2136889055]
+position = Vector2(23, 0)
+
+[node name="WeaponsSprite" type="Sprite2D" parent="PlayerOffset" unique_id=549611652]
+
+[node name="Origin" type="Marker2D" parent="PlayerOffset" unique_id=971215868]
+
+[node name="Target" type="Marker2D" parent="PlayerOffset" unique_id=1923449683]
+position = Vector2(40, 0)
