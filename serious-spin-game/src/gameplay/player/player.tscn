@@ -14,3 +14,4 @@ shape = SubResource("CapsuleShape2D_i08vf")
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1145288600]
 
 [node name="WeaponComponent" parent="." unique_id=533147906 instance=ExtResource("2_64h4j")]
+position = Vector2(30, 0)
