@@ -2,15 +2,22 @@
 
 [ext_resource type="Script" uid="uid://bjqsw5dctflih" path="res://src/gameplay/player/playerWeaponComponent/WeaponComponent.cs" id="1_3i3og"]
 [ext_resource type="Resource" uid="uid://dl8btrdhchf3s" path="res://src/gameplay/player/playerWeaponComponent/SemiAutoSniper.tres" id="2_cquv5"]
+[ext_resource type="Texture2D" uid="uid://dowprow88xo4a" path="res://icon.svg" id="3_uld23"]
 
-[node name="WeaponComponent" type="Node2D" unique_id=533147906 node_paths=PackedStringArray("WeaponSprite")]
+[node name="WeaponComponent" type="Node2D" unique_id=533147906]
 script = ExtResource("1_3i3og")
-heldweapon = ExtResource("2_cquv5")
-WeaponSprite = NodePath("WeaponSprite")
+initialWeapon = ExtResource("2_cquv5")
 
-[node name="Origin" type="Marker2D" parent="." unique_id=971215868]
+[node name="Node2D" type="Node2D" parent="." unique_id=2142327132]
+position = Vector2(20, 0)
 
-[node name="Target" type="Marker2D" parent="." unique_id=1923449683]
+[node name="Origin" type="Marker2D" parent="Node2D" unique_id=971215868]
+
+[node name="Target" type="Marker2D" parent="Node2D" unique_id=1923449683]
 position = Vector2(40, 0)
 
-[node name="WeaponSprite" type="Sprite2D" parent="." unique_id=1570923298]
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Target" unique_id=1113192804]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("3_uld23")
+
+[node name="WeaponSprite" type="Sprite2D" parent="Node2D" unique_id=1570923298]

@@ -12,6 +12,7 @@ public partial class Player : CharacterBody2D
 		
 	}
 
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -20,8 +21,7 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
 		if (direction != Vector2.Zero)
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Y = direction.Y * Speed;
+			velocity = direction * Speed;
 		}
 		if (direction.X == 0)
 		{

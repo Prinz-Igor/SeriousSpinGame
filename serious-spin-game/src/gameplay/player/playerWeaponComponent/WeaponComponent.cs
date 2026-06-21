@@ -27,21 +27,22 @@ public partial class WeaponComponent : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		LookAt(GetGlobalMousePosition());
 	}
 
 	public void OnPLayerFireWeapon()
 	{
+		int projectileCount = 0;
 		for (int i = 0; i < projectilepool.Count; i++)
 		{
+			if (projectileCount !< wStats.salvoSize) break;
+
 			if (!projectilepool[i].inAir)
 			{
+				projectilepool[i].targetVector = GetGlobalMousePosition();
 				projectilepool[i].FireProjectile();
 				i=i+projectilepool.Count;
 			}
 		}
 	}
-
-
-	
 }

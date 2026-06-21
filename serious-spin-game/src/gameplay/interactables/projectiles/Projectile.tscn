@@ -4,11 +4,19 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i08vf"]
 
-[node name="Projectile" type="RigidBody2D" unique_id=1062192624]
+[node name="Projectile" type="CharacterBody2D" unique_id=1780131643]
 script = ExtResource("1_kxll8")
 
 [node name="Node2D" type="CollisionShape2D" parent="." unique_id=664771443]
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_i08vf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=637237905]
 scale = Vector2(0.145, 0.145)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1406243978]
+
+[node name="Node2D" type="CollisionShape2D" parent="Area2D" unique_id=1145990901]
+shape = SubResource("CircleShape2D_i08vf")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnHit"]

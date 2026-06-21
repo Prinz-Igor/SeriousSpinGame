@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class Projectile : RigidBody2D
+public partial class Projectile : CharacterBody2D
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export] Sprite2D pSprite;
 	public ProjectileStats pStats;
-
 	public bool inAir;
+	public Vector2 targetVector;
 	
 	public Projectile(ProjectileStats stats)
 	{
@@ -18,7 +18,7 @@ public partial class Projectile : RigidBody2D
 	}
 	public override void _Ready()
 	{
-		ContactMonitor = true;
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -26,8 +26,11 @@ public partial class Projectile : RigidBody2D
 		
  		if (inAir)
 		{
-			//ApplyCentralImpulse(Transform.);
+			Vector2 velocity = Velocity;
+			velocity = targetVector * pStats.speed;
+			Velocity = velocity;
 		}
+		
 	}
 
 	public void FireProjectile()
@@ -37,10 +40,11 @@ public partial class Projectile : RigidBody2D
 
 	}
 
-	public void OnHit()
+	public void OnHit(Node2D target)
 	{
 		inAir = false;
+		Velocity = new Vector2(0,0);
 		Position = new Vector2(0,0);
-		pSprite.Visible = false; 
+		pSprite.Visible = false;
 	}
 }

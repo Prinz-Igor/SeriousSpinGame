@@ -19,6 +19,5 @@ scale = Vector2(1.72, 1.72)
 shape = SubResource("CapsuleShape2D_i08vf")
 
 [node name="WeaponComponent" parent="." unique_id=533147906 instance=ExtResource("2_64h4j")]
-position = Vector2(30, 0)
 
 [connection signal="FireWeapon" from="." to="WeaponComponent" method="OnPLayerFireWeapon"]
