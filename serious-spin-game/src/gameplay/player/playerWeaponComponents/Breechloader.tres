@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cq76avhnvbiba"]
+
+[ext_resource type="Script" uid="uid://4k5yk4tbfbbx" path="res://src/gameplay/player/playerWeaponComponents/WeaponStats.cs" id="1_fjxlh"]
+
+[resource]
+script = ExtResource("1_fjxlh")
+name = "Semi-Automatic Rifle"
+projectiledamage = 10
+projectileSpeed = 10
+magazineSize = 1
+weaponCooldown = 5
+metadata/_custom_type_script = "uid://4k5yk4tbfbbx"
