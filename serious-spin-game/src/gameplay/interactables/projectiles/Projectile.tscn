@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d0ibsxtlxt0t0"]
+
+[ext_resource type="Script" uid="uid://b3pll4g76eo1e" path="res://src/gameplay/interactables/projectiles/Projectile.cs" id="1_kxll8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i08vf"]
+
+[node name="Projectile" type="RigidBody2D" unique_id=1062192624]
+script = ExtResource("1_kxll8")
+
+[node name="Node2D" type="CollisionShape2D" parent="." unique_id=664771443]
+shape = SubResource("CircleShape2D_i08vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637237905]
+scale = Vector2(0.145, 0.145)

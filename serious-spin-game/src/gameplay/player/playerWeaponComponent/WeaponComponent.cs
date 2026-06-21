@@ -8,17 +8,17 @@ public partial class WeaponComponent : Node2D
 {
 	[Export] WeaponStats initialWeapon;
 	[Export] Sprite2D weaponSprite;
-	WeaponStats stats;
-	ArrayList projectilepool; 
+	WeaponStats wStats;
+	List<Projectile> projectilepool;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		stats = (WeaponStats)initialWeapon.Duplicate();
-		weaponSprite.Texture = stats.weaponSprite; 
-		for (int i = 0; i < stats.magazineSize; i++)
+		wStats = (WeaponStats)initialWeapon.Duplicate();
+		weaponSprite.Texture = wStats.weaponSprite; 
+		for (int i = 0; i < wStats.magazineSize; i++)
 		{
-			projectilepool.Add("Bang");
+			projectilepool.Add(new Projectile(wStats.projectileStats));
 		}
 	}
 
@@ -30,9 +30,16 @@ public partial class WeaponComponent : Node2D
 
 	public void OnPLayerFireWeapon()
 	{
-		GD.Print(projectilepool[0]);
+		for (int i = 0; i < projectilepool.Count; i++)
+		{
+			if (!projectilepool[i].inAir)
+			{
+				projectilepool[i].FireProjectile();
+				i=i+projectilepool.Count;
+			}
+		}
 	}
-	
+
 
 	
 }
