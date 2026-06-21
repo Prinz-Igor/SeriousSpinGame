@@ -7,8 +7,4 @@
 [node name="Target" type="Marker2D" parent="." unique_id=1923449683]
 position = Vector2(40, 0)
 
-[node name="ActiveWeapon" type="Node2D" parent="." unique_id=52957699]
-
-[node name="WeaponsSprite" type="Sprite2D" parent="ActiveWeapon" unique_id=549611652]
-
 [node name="HeldWeapons" type="Node2D" parent="." unique_id=1961862454]
