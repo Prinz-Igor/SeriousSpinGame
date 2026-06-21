@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cb20h607e0ttw"]
+
+[ext_resource type="Script" uid="uid://bjqsw5dctflih" path="res://src/gameplay/player/playerWeaponComponent/WeaponComponent.cs" id="1_3i3og"]
+[ext_resource type="Resource" uid="uid://dl8btrdhchf3s" path="res://src/gameplay/player/playerWeaponComponent/SemiAutoSniper.tres" id="2_cquv5"]
+
+[node name="WeaponComponent" type="Node2D" unique_id=533147906 node_paths=PackedStringArray("WeaponSprite")]
+script = ExtResource("1_3i3og")
+heldweapon = ExtResource("2_cquv5")
+WeaponSprite = NodePath("WeaponSprite")
+
+[node name="Origin" type="Marker2D" parent="." unique_id=971215868]
+
+[node name="Target" type="Marker2D" parent="." unique_id=1923449683]
+position = Vector2(40, 0)
+
+[node name="WeaponSprite" type="Sprite2D" parent="." unique_id=1570923298]

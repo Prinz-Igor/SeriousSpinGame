@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cq76avhnvbiba"]
 
-[ext_resource type="Script" uid="uid://4k5yk4tbfbbx" path="res://src/gameplay/player/playerWeaponComponents/WeaponStats.cs" id="1_fjxlh"]
+[ext_resource type="Script" uid="uid://4k5yk4tbfbbx" path="res://src/gameplay/player/playerWeaponComponent/WeaponStats.cs" id="1_afovm"]
 
 [resource]
-script = ExtResource("1_fjxlh")
-name = "Semi-Automatic Rifle"
+script = ExtResource("1_afovm")
+name = "Martin Henfield"
 projectiledamage = 10
 projectileSpeed = 10
 magazineSize = 1
