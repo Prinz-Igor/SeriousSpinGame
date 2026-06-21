@@ -15,6 +15,8 @@ public partial class WeaponStats : Resource
 
     [Export] public int salvoSize = 1; 
 
+    [Export] public int muzzleOffset = 40; 
+
 
     
 }

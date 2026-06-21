@@ -9,19 +9,28 @@ public partial class WeaponComponent : Node2D
 {
 	[Export] WeaponStats initialWeapon;
 	[Export] Sprite2D weaponSprite;
+	[Export] PackedScene packedProjectile;
 	
 	WeaponStats wStats;
-	List<Projectile> projectilepool;
+	List<Projectile> projectilepool = new List<Projectile>();
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		wStats = (WeaponStats)initialWeapon.Duplicate();
 		weaponSprite.Texture = wStats.weaponSprite; 
+		GD.Print("hello");	
+		Projectile toInstanceP;
 		for (int i = 0; i < wStats.magazineSize; i++)
 		{
-			projectilepool.Add(new Projectile(wStats.projectileStats));
+			toInstanceP = packedProjectile.Instantiate<Projectile>();
+			toInstanceP.pStats = wStats.projectileStats;
+			toInstanceP.Position = new Vector2(wStats.muzzleOffset, toInstanceP.Position.Y);
+			projectilepool.Add(toInstanceP);
+			AddChild(projectilepool[i]);
+
 		}
+		GD.Print("Projectilepool done");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,10 +41,9 @@ public partial class WeaponComponent : Node2D
 
 	public void OnPLayerFireWeapon()
 	{
-		int projectileCount = 0;
+		//int projectileCount = 0;
 		for (int i = 0; i < projectilepool.Count; i++)
 		{
-			if (projectileCount !< wStats.salvoSize) break;
 
 			if (!projectilepool[i].inAir)
 			{

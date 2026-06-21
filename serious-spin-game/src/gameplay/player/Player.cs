@@ -12,6 +12,16 @@ public partial class Player : CharacterBody2D
 		
 	}
 
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionJustPressed("weaponFire"))
+		{
+			EmitSignal(SignalName.FireWeapon);
+		}
+		
+    }
+
+
 
 	public override void _PhysicsProcess(double delta)
 	{
