@@ -70,7 +70,7 @@ public partial class WeaponComponent : Node2D
 		mouseAngleDif += mouseAngle - previousAngle;
 		if (Mathf.Abs(mouseAngleDif)>=360)
 		{
-			curMag++;
+			if (curMag < wStats.magazineSize) curMag++;
 			if (mouseAngleDif > 0){
 				mouseAngleDif -= 360;
 			}

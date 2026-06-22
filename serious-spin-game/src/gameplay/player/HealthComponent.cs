@@ -10,13 +10,13 @@ public partial class HealthComponent : Node
     public bool HasHealthRemaining => !Mathf.IsEqualApprox(currentHealth,0f);
     public float CurrentHealthPercent => maxHealth > 0 ? currentHealth / maxHealth : 0f; 
 
-    public float currentHealth
+    float currentHealth;
+    public float CurrentHealth
     {
         get => currentHealth;
         private set
         {
-            //currentHealth = Mathf.Clamp(value,0,maxHealth);
-            currentHealth=value;
+            currentHealth = Mathf.Clamp(value,0,maxHealth);
             CheckDeath();
         }
 
@@ -24,7 +24,7 @@ public partial class HealthComponent : Node
 
     public override void _Ready()
     {
-        //InitializeHealth();
+        InitializeHealth();
     }
 
     private void InitializeHealth()
