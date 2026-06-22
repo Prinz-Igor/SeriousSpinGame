@@ -10,19 +10,19 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_kxll8")
 
-[node name="Node2D" type="CollisionShape2D" parent="." unique_id=664771443]
-scale = Vector2(0.9, 0.9)
-shape = SubResource("CircleShape2D_i08vf")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=637237905]
 scale = Vector2(0.145, 0.145)
 texture = ExtResource("2_10hga")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1406243978]
+[node name="Node2D" type="CollisionShape2D" parent="." unique_id=664771443]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_i08vf")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1406243978]
 collision_layer = 0
 collision_mask = 0
 
-[node name="Node2D" type="CollisionShape2D" parent="Area2D" unique_id=1145990901]
+[node name="Node2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1145990901]
 shape = SubResource("CircleShape2D_i08vf")
 
-[connection signal="body_entered" from="Area2D" to="." method="OnHit"]
+[connection signal="body_entered" from="HitboxComponent" to="." method="OnHit"]

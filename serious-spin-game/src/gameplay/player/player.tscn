@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cb20h607e0ttw" path="res://src/gameplay/player/playerWeaponComponent/weapon_component.tscn" id="2_64h4j"]
 [ext_resource type="Texture2D" uid="uid://dowprow88xo4a" path="res://icon.svg" id="2_k2146"]
 [ext_resource type="PackedScene" uid="uid://bit1r2ii25ive" path="res://src/gameplay/components/health_component.tscn" id="4_sjr3t"]
+[ext_resource type="Script" uid="uid://btimu8wvwlap4" path="res://src/gameplay/components/HurtboxComponent.cs" id="5_d3trc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i08vf"]
 
@@ -26,5 +27,12 @@ shape = SubResource("CapsuleShape2D_i08vf")
 [node name="WeaponComponent" parent="." unique_id=533147906 instance=ExtResource("2_64h4j")]
 
 [node name="HealthComponent" parent="." unique_id=32775840 instance=ExtResource("4_sjr3t")]
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1541309048]
+script = ExtResource("5_d3trc")
+
+[node name="PlayerShape" type="CollisionShape2D" parent="HurtboxComponent" unique_id=865926598]
+scale = Vector2(1.72, 1.72)
+shape = SubResource("CapsuleShape2D_i08vf")
 
 [connection signal="FireWeapon" from="." to="WeaponComponent" method="OnPLayerFireWeapon"]
