@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileStats" format=3 uid="uid://c6y0x7sl5omqw"]
+
+[ext_resource type="Texture2D" uid="uid://dowprow88xo4a" path="res://icon.svg" id="1_168pb"]
+[ext_resource type="Script" uid="uid://wega35k2axc0" path="res://src/gameplay/interactables/projectiles/ProjectileStats.cs" id="1_vv70o"]
+
+[resource]
+script = ExtResource("1_vv70o")
+projectileTexture = ExtResource("1_168pb")
+damage = 1
+speed = 5
+metadata/_custom_type_script = "uid://wega35k2axc0"

@@ -19,6 +19,9 @@ position = Vector2(-1, 0)
 
 [node name="Player" parent="World/EntityRoot" unique_id=118812628 instance=ExtResource("2_0xvf7")]
 
+[node name="Camera2D" type="Camera2D" parent="World/EntityRoot" unique_id=822645496]
+zoom = Vector2(2.515, 2.515)
+
 [node name="EffectRoot" type="Node2D" parent="World" unique_id=1740414983]
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=2078287783]

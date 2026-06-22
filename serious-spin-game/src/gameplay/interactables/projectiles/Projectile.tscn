@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d0ibsxtlxt0t0"]
+
+[ext_resource type="Script" uid="uid://b3pll4g76eo1e" path="res://src/gameplay/interactables/projectiles/Projectile.cs" id="1_kxll8"]
+[ext_resource type="Texture2D" uid="uid://dowprow88xo4a" path="res://icon.svg" id="2_10hga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i08vf"]
+
+[node name="Projectile" type="CharacterBody2D" unique_id=1780131643]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_kxll8")
+
+[node name="Node2D" type="CollisionShape2D" parent="." unique_id=664771443]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("CircleShape2D_i08vf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637237905]
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_10hga")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1406243978]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Node2D" type="CollisionShape2D" parent="Area2D" unique_id=1145990901]
+shape = SubResource("CircleShape2D_i08vf")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnHit"]

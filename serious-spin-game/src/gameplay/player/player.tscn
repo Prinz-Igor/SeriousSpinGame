@@ -1,17 +1,25 @@
 [gd_scene format=3 uid="uid://bdnnf1mkxpj5n"]
 
 [ext_resource type="Script" uid="uid://dojb1c7qxhlmu" path="res://src/gameplay/player/Player.cs" id="1_kh5p4"]
-[ext_resource type="PackedScene" uid="uid://cb20h607e0ttw" path="res://src/gameplay/player/weapon_component.tscn" id="2_64h4j"]
+[ext_resource type="PackedScene" uid="uid://cb20h607e0ttw" path="res://src/gameplay/player/playerWeaponComponent/weapon_component.tscn" id="2_64h4j"]
+[ext_resource type="Texture2D" uid="uid://dowprow88xo4a" path="res://icon.svg" id="2_k2146"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i08vf"]
 
 [node name="Player" type="CharacterBody2D" unique_id=118812628]
+collision_layer = 2
+collision_mask = 7
+motion_mode = 1
 script = ExtResource("1_kh5p4")
 
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1145288600]
+scale = Vector2(0.26, 0.405)
+texture = ExtResource("2_k2146")
+
 [node name="PlayerShape" type="CollisionShape2D" parent="." unique_id=921467127]
+scale = Vector2(1.72, 1.72)
 shape = SubResource("CapsuleShape2D_i08vf")
 
-[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1145288600]
-
 [node name="WeaponComponent" parent="." unique_id=533147906 instance=ExtResource("2_64h4j")]
-position = Vector2(30, 0)
+
+[connection signal="FireWeapon" from="." to="WeaponComponent" method="OnPLayerFireWeapon"]
