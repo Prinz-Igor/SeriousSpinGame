@@ -24,8 +24,10 @@ public partial class WeaponComponent : Node2D
 	//Projectilepool, so that all Projectiles of any given magazine are always loaded and dont cause runtime lag
 	List<Projectile> projectilepool = new List<Projectile>();
 
-	//Mouseangle in Relation to player, this measures how much the player spins. 
-	public float mouseAngle = 0; 
+	//Variables to measure how much the player spins. 
+	public float previousAngle = 0; 
+	public float mouseAngle =0;
+	public float mouseAngleDif=0;
 
 	/*	Called when the node enters the scene tree for the first time.
 		Sets up Projectilepool, EntityRoot and loads the Weapon- and Projectilestats. 
@@ -62,13 +64,20 @@ public partial class WeaponComponent : Node2D
     private void HandleMouseInput()
     {
         LookAt(GetGlobalMousePosition());
-        mouseAngle += GetAngleTo(GetLocalMousePosition());
-		if (Mathf.Abs(mouseAngle)>=360)
+		
+		previousAngle = mouseAngle;
+        mouseAngle = Mathf.RadToDeg(Rotation);
+		mouseAngleDif += mouseAngle - previousAngle;
+		if (Mathf.Abs(mouseAngleDif)>=360)
 		{
-			curMag++;
-			if (mouseAngle > 0) mouseAngle -= 360;
-			else mouseAngle += 360;
+			if (curMag < wStats.magazineSize) curMag++;
+			if (mouseAngleDif > 0){
+				mouseAngleDif -= 360;
+			}
+			else mouseAngleDif+= 360;
+			
 		}
+		//GD.Print("MouseAngle:"+ mouseAngle+"\n previousangle"+previousAngle+"\n MouseangleDif:" + mouseAngleDif + "\n Magazine:" + curMag);
     }
 
 
@@ -79,23 +88,25 @@ public partial class WeaponComponent : Node2D
             {
                 OnPLayerFireWeapon();
                 salvo++;
-
-            }
+				curMag--;
+				mouseAngleDif=0;
+		    }
     }
 
     public void OnPLayerFireWeapon()
 	{
-		//int projectileCount = 0;
 		for (int i = 0; i < projectilepool.Count; i++)
 		{
 			if (!projectilepool[i].inAir)
 			{
-				Vector2 targetVector = GetGlobalMousePosition().Normalized();
+				Vector2 targetVector = (GetGlobalMousePosition() - this.GlobalPosition).Normalized();
 				projectilepool[i].Rotation = this.GlobalRotation;
-				projectilepool[i].Position = this.GlobalPosition+targetVector*wStats.muzzleOffset;
-				projectilepool[i].targetVector = targetVector;
+				projectilepool[i].Position = this.GlobalPosition;
+				projectilepool[i].targetVector = targetVector; 
 				projectilepool[i].FireProjectile();
 				i=i+projectilepool.Count;
+				GD.Print("Mouse Position"+GetGlobalMousePosition()+"\nTargetVector:"+targetVector);
+				
 			}
 		}
 	}

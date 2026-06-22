@@ -6,13 +6,16 @@ public partial class Player : CharacterBody2D
 {
 	[Export] WeaponComponent weaponComponent;
 	[Export] public float Speed = 300.0f;
+	[Export] public HealthComponent healthComponent;
 
-	[Signal] public delegate void FireWeaponEventHandler(); 
+	[Signal] public delegate void FireWeaponEventHandler();
 
-	public override void _Ready() {
+	public override void _Ready()
+	{
+		healthComponent.Death += OnDeathSignalEmit;
 	}
 
-    public override void _Process(double delta)
+	public override void _Process(double delta)
     {
         
 		
@@ -34,6 +37,7 @@ public partial class Player : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
+		
 		if (direction != Vector2.Zero)
 		{
 			velocity = direction * Speed;
@@ -44,5 +48,12 @@ public partial class Player : CharacterBody2D
 
 		Velocity = velocity;
     }
+
+	private void OnDeathSignalEmit()
+	{
+		GD.Print("Death Has Happened");
+		healthComponent.Heal(20);
+
+	}
 
 }
