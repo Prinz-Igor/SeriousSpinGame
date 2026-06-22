@@ -7,4 +7,5 @@
 script = ExtResource("1_c72mx")
 projectileTexture = ExtResource("1_8gohw")
 damage = 10
+speed = 500
 metadata/_custom_type_script = "uid://wega35k2axc0"

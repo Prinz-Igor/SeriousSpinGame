@@ -8,6 +8,8 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i08vf"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojsla"]
+
 [node name="Player" type="CharacterBody2D" unique_id=118812628 node_paths=PackedStringArray("weaponComponent", "healthComponent")]
 collision_layer = 2
 collision_mask = 7
@@ -21,7 +23,7 @@ scale = Vector2(0.26, 0.405)
 texture = ExtResource("2_k2146")
 
 [node name="PlayerShape" type="CollisionShape2D" parent="." unique_id=921467127]
-scale = Vector2(1.72, 1.72)
+scale = Vector2(1.58, 1.58)
 shape = SubResource("CapsuleShape2D_i08vf")
 
 [node name="WeaponComponent" parent="." unique_id=533147906 instance=ExtResource("2_64h4j")]
@@ -30,6 +32,10 @@ shape = SubResource("CapsuleShape2D_i08vf")
 
 [node name="HurtboxComponent" parent="." unique_id=1746658307 node_paths=PackedStringArray("healthComponent") instance=ExtResource("5_d3trc")]
 healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1127054080]
+scale = Vector2(1.645, 1.645)
+shape = SubResource("CapsuleShape2D_ojsla")
 
 [connection signal="FireWeapon" from="." to="WeaponComponent" method="OnPLayerFireWeapon"]
 [connection signal="body_entered" from="HurtboxComponent" to="HurtboxComponent" method="OnBodyEntered"]

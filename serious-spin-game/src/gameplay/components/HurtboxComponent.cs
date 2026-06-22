@@ -9,6 +9,7 @@ public partial class HurtboxComponent : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Monitoring=true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,17 +25,9 @@ public partial class HurtboxComponent : Area2D
 	public void OnBodyEntered(Node2D body)
 	{
 		int damage = 0;
-		switch (body.GetClass())
+		if (body is Projectile projectile)
 		{
-			case"Projectile": 
-				Projectile p = (Projectile)body;
-				damage = p.pStats.damage;
-			break;
-
-			default:
-			GD.PrintErr("Unregistered Collision detected");
-			break;
-
+			damage = projectile.pStats.damage;
 		}
 		DealDamage(damage);
 	}
