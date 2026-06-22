@@ -37,6 +37,7 @@ public partial class Player : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
+		
 		if (direction != Vector2.Zero)
 		{
 			velocity = direction * Speed;

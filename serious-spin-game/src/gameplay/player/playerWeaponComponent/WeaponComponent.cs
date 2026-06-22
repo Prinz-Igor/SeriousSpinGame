@@ -77,7 +77,7 @@ public partial class WeaponComponent : Node2D
 			else mouseAngleDif+= 360;
 			
 		}
-		GD.Print("MouseAngle:"+ mouseAngle+"\n previousangle"+previousAngle+"\n MouseangleDif:" + mouseAngleDif + "\n Magazine:" + curMag);
+		//GD.Print("MouseAngle:"+ mouseAngle+"\n previousangle"+previousAngle+"\n MouseangleDif:" + mouseAngleDif + "\n Magazine:" + curMag);
     }
 
 
@@ -95,17 +95,18 @@ public partial class WeaponComponent : Node2D
 
     public void OnPLayerFireWeapon()
 	{
-		//int projectileCount = 0;
 		for (int i = 0; i < projectilepool.Count; i++)
 		{
 			if (!projectilepool[i].inAir)
 			{
-				Vector2 targetVector = GetGlobalMousePosition().Normalized();
+				Vector2 targetVector = (GetGlobalMousePosition() - this.GlobalPosition).Normalized();
 				projectilepool[i].Rotation = this.GlobalRotation;
-				projectilepool[i].Position = this.GlobalPosition+targetVector*wStats.muzzleOffset;
-				projectilepool[i].targetVector = targetVector;
+				projectilepool[i].Position = this.GlobalPosition;
+				projectilepool[i].targetVector = targetVector; 
 				projectilepool[i].FireProjectile();
 				i=i+projectilepool.Count;
+				GD.Print("Mouse Position"+GetGlobalMousePosition()+"\nTargetVector:"+targetVector);
+				
 			}
 		}
 	}
