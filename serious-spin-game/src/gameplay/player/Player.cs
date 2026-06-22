@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.Metadata;
 
 public partial class Player : CharacterBody2D
 {
@@ -13,10 +14,7 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("weaponFire"))
-		{
-			EmitSignal(SignalName.FireWeapon);
-		}
+        
 		
     }
 
@@ -24,7 +22,15 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		HandleMovement(delta);
+		
+		MoveAndSlide();
+	}
+
+    private void HandleMovement(double delta)
+    {
+
+        Vector2 velocity = Velocity;
 
 		// Get the input direction and handle the movement/deceleration.
 		Vector2 direction = Input.GetVector("inputLeft", "inputRight", "inputUp", "inputDown");
@@ -32,18 +38,11 @@ public partial class Player : CharacterBody2D
 		{
 			velocity = direction * Speed;
 		}
-		if (direction.X == 0)
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-		}
-		if (direction.Y == 0)
-		{
-			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
-		}
+		if (direction.X == 0) velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		
-		
+		if (direction.Y == 0) velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
 
 		Velocity = velocity;
-		MoveAndSlide();
-	}
+    }
+
 }
